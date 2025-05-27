@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import './../index.css';
 
 const AlbumCard = ({album}) => {
+    const nagivate = useNavigate()
     return(
-        <div className="card">
+        <div className="card" onClick={() => {nagivate(`/album/${album.id}`)}}>
             <img 
             src={album.images[0].url} 
             alt={album.name}
