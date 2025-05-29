@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const AlbumTracks = ({ }) => {
     const { id } = useParams();
-    const { accessToken } = useToken()
+    const { publicAccessToken } = useToken()
     const [tracks, setTracks] = useState([])
     const nagivate = useNavigate()
 
@@ -16,7 +16,7 @@ const AlbumTracks = ({ }) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + accessToken
+                Authorization: "Bearer " + publicAccessToken
             }
         }
         fetch(

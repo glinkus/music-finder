@@ -9,7 +9,7 @@ const clientId = import.meta.env.VITE_CLIENT_ID;
 const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
 function AlbumDisplay() {
   const [searchInput, setSearchInput] = useState("")
-  const {accessToken, setAccessToken} = useToken()
+  const {publicAccessToken, setPublicAccessToken } = useToken()
   const [albums, setAlbums] = useState([])
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function AlbumDisplay() {
     }
     fetch("https://accounts.spotify.com/api/token", authParams)
       .then((result) => result.json())
-      .then((data) => setAccessToken(data.access_token))
+      .then((data) => setPublicAccessToken(data.access_token))
 
   }, [])
   async function search() {
@@ -32,7 +32,7 @@ function AlbumDisplay() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + accessToken
+        Authorization: "Bearer " + publicAccessToken
       }
     }
 
